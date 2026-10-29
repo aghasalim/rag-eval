@@ -1,0 +1,35 @@
+{"id": 0, "file": "calibration.rst", "question": "Which calibration method is more prone to overfitting on small datasets: sigmoid or isotonic?", "evidence": "it is more prone to overfitting, especially on small datasets"}
+{"id": 1, "file": "calibration.rst", "question": "What else are calibration curves called?", "evidence": "also referred to as *reliability diagrams*"}
+{"id": 2, "file": "calibration.rst", "question": "What is the only restriction on the mapping function used by isotonic calibration?", "evidence": "is that the mapping function is monotonically increasing"}
+{"id": 3, "file": "cross_validation.rst", "question": "Should leave-one-out or 5/10-fold cross validation be preferred in general?", "evidence": "5 or 10-fold cross validation should be preferred to LOO"}
+{"id": 4, "file": "cross_validation.rst", "question": "In what situation can 5 or 10-fold CV overestimate the generalization error?", "evidence": "if the learning curve is steep for the training size in question"}
+{"id": 5, "file": "cross_validation.rst", "question": "How do I make sure samples from the same subject are not in both train and test sets?", "evidence": "ensures that the same group is not represented in both testing and training sets"}
+{"id": 6, "file": "cross_validation.rst", "question": "How should I cross-validate on time series so I do not train on the future?", "evidence": "fold as test set. Note that unlike standard cross-validation methods"}
+{"id": 7, "file": "tree.rst", "question": "Why do decision trees do badly with many features and few samples?", "evidence": "Decision trees tend to overfit on data with a large number of features"}
+{"id": 8, "file": "ensemble.rst", "question": "When are histogram-based gradient boosting estimators much faster than the classic ones?", "evidence": "can be **orders of magnitude faster**"}
+{"id": 9, "file": "ensemble.rst", "question": "How can I speed up gradient boosting by subsampling features?", "evidence": "Using a small ``max_features`` value can significantly decrease the runtime"}
+{"id": 10, "file": "ensemble.rst", "question": "How are out-of-bag estimates obtained in stochastic gradient boosting?", "evidence": "allows to compute out-of-bag estimates of the test deviance"}
+{"id": 11, "file": "neighbors.rst", "question": "Why does radius-based neighbors classification help when data is not uniformly sampled?", "evidence": "points in sparser neighborhoods use fewer nearest neighbors for the classification"}
+{"id": 12, "file": "neighbors.rst", "question": "Why does radius neighbors become less effective in high-dimensional spaces?", "evidence": "this method becomes less effective due to the so-called \"curse of dimensionality\""}
+{"id": 13, "file": "feature_selection.rst", "question": "How does recursive feature elimination work?", "evidence": "recursively considering smaller and smaller sets of features"}
+{"id": 14, "file": "impute.rst", "question": "Is sophisticated imputation worth it compared to a simple baseline?", "evidence": "is a strong and cheap baseline, and more elaborate imputation often brings only marginal gains"}
+{"id": 15, "file": "impute.rst", "question": "Does adding a missing-value indicator help prediction?", "evidence": "tends to help prediction, even when values are missing completely at random"}
+{"id": 16, "file": "linear_model.rst", "question": "Why is ordinary least squares unstable when features are collinear?", "evidence": "the least-squares estimate becomes highly sensitive to random errors in the observed target"}
+{"id": 17, "file": "linear_model.rst", "question": "Which linear model can set coefficients exactly to zero?", "evidence": "it is able to set coefficients exactly to zero"}
+{"id": 18, "file": "permutation_importance.rst", "question": "What happens to permutation importance when two features are strongly correlated?", "evidence": "This results in a lower reported importance value for both features"}
+{"id": 19, "file": "grid_search.rst", "question": "What does randomized search do differently from grid search?", "evidence": "can sample a given number of candidates from a parameter space with a specified distribution"}
+{"id": 20, "file": "grid_search.rst", "question": "Is there a faster alternative to exhaustive hyperparameter search?", "evidence": "which can be much faster at finding a good parameter combination"}
+{"id": 21, "file": "classification_threshold.rst", "question": "How can I tune the decision threshold of a trained classifier?", "evidence": "tunes this threshold using an internal cross-validation"}
+{"id": 22, "file": "learning_curve.rst", "question": "What does a high-degree polynomial fit that matches the training data but not the true function illustrate?", "evidence": "it is very sensitive to varying training data (high variance)"}
+{"id": 23, "file": "outlier_detection.rst", "question": "What is novelty detection as opposed to outlier detection?", "evidence": "detecting whether a **new** observation is an outlier"}
+{"id": 24, "file": "clustering.rst", "question": "What objective does k-means minimize?", "evidence": "minimizing a criterion known as the *inertia* or within-cluster sum-of-squares"}
+{"id": 25, "file": "compose.rst", "question": "Why should preprocessing be placed inside a Pipeline rather than applied before cross-validation?", "evidence": "Incorporating statistics from test data into the preprocessors makes cross-validation scores unreliable"}
+{"id": 26, "file": "preprocessing.rst", "question": "Why scale features with MinMaxScaler or MaxAbsScaler?", "evidence": "preserving zero entries in sparse data"}
+{"id": 27, "file": "svm.rst", "question": "Do SVMs give probability estimates directly?", "evidence": "SVMs do not directly provide probability estimates"}
+{"id": 28, "file": "manifold.rst", "question": "How is perplexity defined in t-SNE?", "evidence": "The perplexity is defined as"}
+{"id": 29, "file": "outlier_detection.rst", "question": "How is the outlier threshold set when contamination is specified in IsolationForest?", "evidence": "When the ``contamination`` parameter is set, the threshold (called ``offset_``)"}
+{"id": 30, "file": "naive_bayes.rst", "question": "What is Laplace smoothing in naive Bayes?", "evidence": "is called Laplace smoothing"}
+{"id": 31, "file": "covariance.rst", "question": "How can the empirical covariance estimate be improved when samples are few?", "evidence": "empirical covariance matrix has been introduced: the ``shrinkage``"}
+{"id": 32, "file": "multiclass.rst", "question": "What is the one-vs-rest strategy for multiclass classification?", "evidence": "The **one-vs-rest** strategy, also known as **one-vs-all**"}
+{"id": 33, "file": "preprocessing.rst", "question": "How do I encode categorical features as integers?", "evidence": "This estimator transforms each categorical feature to one"}
+{"id": 34, "file": "model_evaluation.rst", "question": "Which averaging option accounts for class imbalance in multiclass metrics?", "evidence": "accounts for class imbalance by computing the average of"}

@@ -1,0 +1,12 @@
+faiss-cpu==1.15.1
+sentence-transformers==6.2.0
+rank-bm25==0.2.2
+numpy==2.5.4
+anthropic==2.3.0
+pytest==9.2.0
+fastapi==0.162.0
+uvicorn==0.54.0
+httpx==0.28.1
+mlflow==3.17.2
+pandas
+tabulate
