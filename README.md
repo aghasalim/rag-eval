@@ -13,11 +13,19 @@ app_port: 7860
 **Approach.** Fixed-size character chunks -> `all-MiniLM-L6-v2` embeddings in FAISS (exact inner product) and/or BM25 -> optional reciprocal-rank fusion (c=60) -> optional `ms-marco-MiniLM-L-6-v2` cross-encoder rerank of the top 20.
 Relevance is defined by an **evidence string**: a retrieved chunk is correct if it contains the gold sentence fragment. This keeps the metric independent of how the corpus is chunked, so chunk-size experiments are comparable.
 
+![Retrieval pipeline](results/pipeline.png)
+
+The retrieval grid: every chunking setting is crossed with dense, BM25 or hybrid retrieval, with and without rerank.
+
 ## Evaluation set
 35 hand-written questions (`data_eval/qa.jsonl`), each with a gold evidence fragment verified to exist in its source file (`tests/`). Metrics: hit@k, MRR@k, 95% bootstrap CIs over questions (2000 resamples).
 
 ## Results (retrieval; 48 configs, all run, none dropped)
 Full grid: `results/retrieval.csv`. Regenerate with `make experiments`.
+
+![MRR@5 by chunk size](results/mrr_by_size.png)
+
+MRR@5 per chunk size and retrieval mode, overlap 0, without and with rerank; error bars are 95% bootstrap CIs over the 35 questions.
 
 ### Mean over all other settings (hit@5 / MRR@5)
 
@@ -73,6 +81,10 @@ Full grid: `results/retrieval.csv`. Regenerate with `make experiments`.
 - Reranking helps most for small chunks and for dense retrieval (MRR@5 +0.05 on average) and can hurt for large chunks and BM25 (e.g. 2400/0 BM25: 0.822 -> 0.650). The MS-MARCO cross-encoder truncates long inputs.
 - Overlap of 20% made no measurable difference (0.681 vs 0.691 MRR@5 on average).
 
+![MRR@5 change from rerank](results/rerank_delta.png)
+
+MRR@5 with rerank minus without, per chunk size and mode (mean over both overlaps). Rerank helps dense at every size and hurts BM25 at 1200 and 2400.
+
 ## Faithfulness: NOT YET RUN
 `scripts/faithfulness.py` (Haiku generates from the top-5 chunks; Sonnet judges whether each claim is supported by the context) is written but has not produced results: the API key available in my environment was rejected (HTTP 401). No faithfulness number is reported until it runs. Config fixed in advance: size 600, overlap 0, hybrid + rerank.
 
@@ -80,6 +92,7 @@ Full grid: `results/retrieval.csv`. Regenerate with `make experiments`.
 ```bash
 make setup data test     # env, pinned docs, tests
 make experiments         # ~3 min on a laptop CPU
+python scripts/make_figures.py   # README figures from results/retrieval.csv
 ANTHROPIC_API_KEY=... make faithfulness
 ```
 Docker: `docker build -t rag-eval . && docker run -p 7860:7860 rag-eval` then `curl "localhost:7860/search?q=how+does+RFE+work"` (verified locally: image 3.3 GB, /health and /search work).
