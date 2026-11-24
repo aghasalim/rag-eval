@@ -4,6 +4,8 @@ sdk: docker
 app_port: 7860
 ---
 
+<p align="center"><img src="assets/banner.jpg" alt="Line drawing of a search query sending arrows to a ranked column of documents, with the top one highlighted" width="100%"></p>
+
 # rag-eval: retrieval experiments for a RAG system over the scikit-learn user guide
 
 **Problem.** Which retrieval settings (chunk size, overlap, dense vs BM25 vs hybrid, cross-encoder rerank) actually help a RAG system, measured on a hand-built Q&A set rather than by eyeballing answers.
@@ -16,6 +18,18 @@ Relevance is defined by an **evidence string**: a retrieved chunk is correct if 
 ![Retrieval pipeline](results/pipeline.png)
 
 The retrieval grid: every chunking setting is crossed with dense, BM25 or hybrid retrieval, with and without rerank.
+
+<details>
+<summary>Contents</summary>
+
+- [Evaluation set](#evaluation-set)
+- [Results (retrieval; 48 configs, all run, none dropped)](#results-retrieval-48-configs-all-run-none-dropped)
+- [Faithfulness: NOT YET RUN](#faithfulness-not-yet-run)
+- [Run it](#run-it)
+- [Project 2: serving + tracking](#project-2-serving--tracking)
+- [Limitations](#limitations)
+
+</details>
 
 ## Evaluation set
 35 hand-written questions (`data_eval/qa.jsonl`), each with a gold evidence fragment verified to exist in its source file (`tests/`). Metrics: hit@k, MRR@k, 95% bootstrap CIs over questions (2000 resamples).
