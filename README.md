@@ -4,8 +4,6 @@ sdk: docker
 app_port: 7860
 ---
 
-<p align="center"><img src="assets/banner.jpg" alt="Line drawing of a search query sending arrows to a ranked column of documents, with the top one highlighted" width="100%"></p>
-
 # rag-eval: retrieval experiments for a RAG system over the scikit-learn user guide
 
 **Problem.** Which retrieval settings (chunk size, overlap, dense vs BM25 vs hybrid, cross-encoder rerank) actually help a RAG system, measured on a hand-built Q&A set rather than by eyeballing answers.
